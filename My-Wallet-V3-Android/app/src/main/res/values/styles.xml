@@ -1,0 +1,425 @@
+<resources>
+
+    <style name="AppTheme.MainActivity">
+        <!-- Only exists to prevent issues with pre-21 devices, see values-v21 -->
+    </style>
+
+    <style name="NoDisplay" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary_navy_medium</item>
+        <item name="colorPrimaryDark">@color/primary_navy_medium</item>
+        <item name="colorAccent">@color/primary_navy_medium</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowNoDisplay">true</item>
+    </style>
+
+    <style name="AppTheme.ReceiveQrWindow">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+    <style name="AppTheme.ChartsWindow">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+    <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="PasswordChangeDialogEditText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">70</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:password">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:textColor">@color/primary_gray_medium</item>
+    </style>
+
+    <style name="PasswordChangeDialogEditTextLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="PasswordChangeDialogFieldLabel">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">30</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="CustomDialogButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:theme">@style/PlainTheme</item>
+    </style>
+
+    <style name="CustomDialogButtonContainer">
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical|right</item>
+    </style>
+
+    <!-- Using a style to apply the font as it doesn't work in Themes -->
+    <style name="ButtonStyle">
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <!-- Using a Theme to apply the button color as it doesn't work in Styles -->
+    <style name="ButtonGreenTheme" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/product_green_medium</item>
+        <item name="colorControlHighlight">@color/product_green_received</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- {@deprecated Use LightBlueButtonStyle instead} -->
+    <style name="ButtonLightBlueTheme" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/primary_blue_accent</item>
+        <item name="colorControlHighlight">@color/primary_navy_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ButtonBlueTheme" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/primary_navy_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ButtonRedTheme" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/product_red_medium</item>
+        <item name="colorControlHighlight">@color/secondary_red_light</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="MegaButtonAccentBlue">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_accent_blue</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="SpinnerWhite">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="SpinnerBlack">
+        <item name="colorControlNormal">@color/black</item>
+    </style>
+
+    <style name="RecoveryPhraseEditText">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">textNoSuggestions</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textColor">@color/primary_gray_dark</item>
+        <item name="android:textColorHint">@color/product_gray_hint</item>
+    </style>
+
+    <style name="FullscreenDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowActionModeOverlay">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="PinEntryButtonLayout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/selector_navy_blue</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/pinentry_padding</item>
+    </style>
+
+    <style name="PinEntryButtonNumberText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/pinentry_num_text_size</item>
+    </style>
+
+    <style name="PinEntryButtonLetterText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/pinentry_alpha_text_size</item>
+    </style>
+
+    <style name="PinEntryKeyboardHorizontalContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:baselineAligned">false</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="ContactsHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Subhead</item>
+        <item name="android:textColor">@color/primary_gray_medium</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="ContactsDetail">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Body1</item>
+        <item name="android:textColor">@color/primary_gray_medium</item>
+    </style>
+
+    <style name="TransactionDetailHeader">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textColor">@color/product_gray_headers</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="OnboardingHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Headline</item>
+        <item name="android:textColor">@color/primary_navy_medium</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="OnBoardingDetail">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Body1</item>
+        <item name="android:textColor">@color/primary_gray_medium</item>
+        <item name="android:fontFamily">@font/montserrat_light</item>
+    </style>
+
+    <style name="OnBoardingEmail">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Body1</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+    </style>
+
+    <style name="ConfirmPaymentTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textColor">@color/primary_gray_dark</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat_light</item>
+    </style>
+
+    <style name="ExchangeBitcoinTitle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/primary_gray_dark</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat_light</item>
+    </style>
+
+    <style name="ConfirmPaymentField">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:gravity">right</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="ExchangeTextViewButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/primary_blue_accent</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="EditTextNumberField">
+        <item name="android:background">@null</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:inputType">numberDecimal|number</item>
+        <item name="android:maxLength">17</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:selectAllOnFocus">true</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ShapeShiftConfirmationTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textColor">@color/product_gray_headers</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/montserrat_light</item>
+    </style>
+
+    <style name="ShapeShiftConfirmationAmount">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:gravity">right</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="CryptoCurrencySelectorTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="DashboardCoinTitle">
+        <item name="android:textColor">@color/primary_gray_dark</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="DashboardCoinTitle.LayoutMatchParentWidth">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="DashboardCoinTitle.Small">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="DashboardCoinAmounts">
+        <item name="android:textColor">@color/primary_gray_dark</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="DashboardCoinAmounts.LayoutMatchParentWidth">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="DashboardCoinAmounts.NonSpendable">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:background">@drawable/rounded_non_spendable_button</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingTop">5dp</item>
+    </style>
+
+    <style name="ToolbarTitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="NavDrawerTextAppearance" parent="Widget.Design.NavigationView">
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="DialogNoAnimations">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+    </style>
+
+</resources>

@@ -1,0 +1,27 @@
+<ion-view id="buy-and-sell">
+  <ion-nav-bar class="bar-royal">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+    <ion-nav-title>Bitcoin Price Chart</ion-nav-title>
+  </ion-nav-bar>
+  <ion-content>
+        <div class="chart-container">
+            <div class="chart">
+              <div class="ct-chart" id="bch-chart"></div>
+                <div class="latest-price">
+                  <span class="light-yellow" style="font-size: 16px;">Latest BCH price:</span>
+                  <br/>
+                  <span id="latest-price">{{bchPriceLatest}}</span>
+                </div>
+            </div>
+            <div class="chart">
+              <div class="ct-chart" id="btc-chart"></div>
+                <div class="latest-price">
+                  <span class="light-yellow" style="font-size: 16px;">Latest BTC price:</span>
+                  <br/>
+                  <span id="latest-price">{{btcPriceLatest}}</span>
+                </div>
+            </div>
+        </div>
+  </ion-content>
+</ion-view>

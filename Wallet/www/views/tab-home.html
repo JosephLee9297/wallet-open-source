@@ -1,0 +1,122 @@
+<ion-view id="tab-home" show-tabs>
+  <ion-nav-bar class="bar-royal">
+    <ion-nav-title><span class="nav-bar-title textlogo"><span class="moon-symbol"></span>itcoin.com Wallet</span></ion-nav-title>
+  </ion-nav-bar>
+
+  <ion-content>
+    <ion-refresher
+     pulling-icon="ion-ios-refresh"
+     spinner="ios-small"
+     on-refresh="onRefresh()">
+   </ion-refresher>
+
+    <div class="list card release ng-hide" ng-show="newRelease">
+      <i class="item icon big-icon-svg">
+        <img src="img/icon-update.svg" class="bg"/>
+      </i>
+
+      <div class="item title">{{newReleaseText}}</div>
+      <div class="item release-notes" ng-if="newReleaseNotes"><span ng-bind-html="newReleaseNotes"></span></div>
+
+
+      <div class="button" ng-click="showUpdatePopup()">
+        <span translate>Download</span>
+      </div>
+    </div>
+
+    <div class="buttons row">
+      <div class="col">
+        <div class="button button-outline button-grey-outline" ui-sref="tabs.receive">
+          <span translate>Receive</span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="button button-outline button-grey-outline" ng-class="{'ng-hide': walletsWithFunds.length}"
+             ui-sref="tabs.buyandsell">
+          <span translate>Buy Bitcoin</span>
+        </div>
+        <div class="button  button-outline button-grey-outline" ng-class="{'ng-hide': !walletsWithFunds.length}"
+             ng-click="startFreshSend()">
+          <span translate>Send</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="list card homeTip" ng-if="homeTip">
+      <div class="item item-icon-right item-heading">
+        <div class="title" translate>
+          Your Bitcoin Wallets are ready!
+        </div>
+        <a ng-click="hideHomeTip()"><i class="icon ion-ios-close-empty close-home-tip"></i></a>
+      </div>
+    </div>
+
+    <div class="list card" ng-hide="!txps[0]">
+      <a class="item item-icon-right item-heading" ui-sref="tabs.proposals">
+        {{'Payment Proposals'|translate}}
+        <i class="icon bp-arrow-right"></i>
+        <span class="badge badge-assertive m5t m10r" ng-show="txpsN>3"> {{txpsN}}</span>
+      </a>
+
+      <div ng-repeat="tx in txps" ng-click="openTxpModal(tx)">
+        <a class="wallet-details__item item item-sub" ng-include="'views/includes/txp.html'"></a>
+      </div>
+    </div>
+
+    <div class="list card" ng-if="notifications[0] && recentTransactionsEnabled">
+      <a class="item item-icon-right item-heading" ui-sref="tabs.activity">
+        <span translate>Recent Transactions</span>
+        <i class="icon bp-arrow-right"></i>
+      </a>
+      <a class="item item-sub activity" ng-repeat="notification in notifications" ng-click="openNotificationModal(notification)">
+        <span ng-include="'views/includes/walletActivity.html'"></span>
+      </a>
+    </div>
+
+    <div class="list card">
+      <div class="item item-icon-right item-heading">
+        <div translate>Bitcoin Cash (BCH)</div>
+        <div translate class="subtitle">Instant transactions with low fees</div>
+        <a ui-sref="tabs.add({coin:'bch'})"><i class="icon ion-ios-plus-empty list-add-button"></i></a>
+      </div>
+      <div>
+        <a ng-repeat="wallet in walletsBch track by $index"
+           class="item item-sub item-icon-left item-big-icon-left item-icon-right wallet"
+           ng-click="openWallet(wallet)">
+          <span ng-include="'views/includes/walletList.html'"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="list card">
+      <div class="item item-icon-right item-heading">
+        <div translate>Bitcoin Core (BTC)</div>
+        <a ui-sref="tabs.add"><i class="icon ion-ios-plus-empty list-add-button"></i></a>
+      </div>
+      <div>
+        <a ng-repeat="wallet in walletsBtc track by $index"
+           class="item item-sub item-icon-left item-big-icon-left item-icon-right wallet"
+           ng-click="openWallet(wallet)">
+          <span ng-include="'views/includes/walletList.html'"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="ng-hide list card" ng-show="walletsBtc[0] && bitpayCardItems.length>0" ng-include="'views/includes/bitpayCardsCard.html'"></div>
+    <div class="ng-hide list card" ng-show="walletsBtc[0] && buyAndSellItems.length>0" ng-include="'views/includes/buyAndSellCard.html'"></div>
+    <div class="ng-hide list card" ng-show="homeIntegrations.length>0" ng-include="'views/includes/homeIntegrations.html'"></div>
+    <div class="ng-hide list card" ng-show="nextStepsItems.length>0 && !isWindowsPhoneApp" ng-include="'views/includes/nextSteps.html'"></div>
+    <div class="ng-hide list card" ng-show="showServices && (walletsBch[0] || walletsBtc[0])" ng-include="'views/includes/services.html'"></div>
+
+    <div class="list card card-banner">
+      <ion-spinner ng-if="bannerIsLoading"></ion-spinner>
+      <a id="home_banner" href-banner="{{bannerImageUrl}}" class="track_banner_click" ng-if="!bannerIsLoading" ng-click="openBannerUrl()">
+        <img class="card-banner__img" ng-src="{{bannerImageUrl}}"/>
+      </a>
+
+    </div>
+    
+    <div class="ng-hide list card" ng-show="nextStepsItems.length>0 && !isWindowsPhoneApp" ng-include="'views/includes/community.html'"></div>
+
+  </ion-content>
+</ion-view>

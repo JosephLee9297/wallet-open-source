@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- LOADING LAYOUT -->
+        <ProgressBar
+            android:id="@+id/loading_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:visibility="gone" />
+
+        <!-- MAIN LAYOUT -->
+        <LinearLayout
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/bottom_navigation_height"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            tools:visibility="visible">
+
+            <android.support.v7.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="16dp"
+                app:alignmentMode="alignBounds"
+                app:columnCount="2"
+                app:columnOrderPreserved="false"
+                app:rowCount="3"
+                app:useDefaultMargins="true">
+
+                <!-- FROM -->
+                <TextView
+                    style="@style/ConfirmPaymentTitle"
+                    android:text="@string/from" />
+
+                <TextView
+                    android:id="@+id/textview_from_address"
+                    style="@style/ConfirmPaymentField"
+                    android:layout_width="0dp"
+                    android:ellipsize="end"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    app:layout_gravity="fill_horizontal"
+                    tools:text="My Bitcoin Wallet" />
+
+                <!-- TO -->
+                <TextView
+                    style="@style/ConfirmPaymentTitle"
+                    android:text="@string/to" />
+
+                <TextView
+                    android:id="@+id/textview_to_name"
+                    style="@style/ConfirmPaymentField"
+                    android:layout_width="0dp"
+                    android:ellipsize="end"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    app:layout_gravity="fill_horizontal"
+                    tools:text="Riaan" />
+
+                <!-- DESCRIPTION -->
+                <TextView
+                    style="@style/ConfirmPaymentTitle"
+                    android:text="@string/description" />
+
+                <EditText
+                    android:id="@+id/edittext_description"
+                    style="@style/ConfirmPaymentField"
+                    android:background="@null"
+                    android:ellipsize="end"
+                    android:hint="@string/contacts_confirm_shared_with"
+                    android:inputType="textShortMessage|textCapSentences"
+                    android:maxLength="256"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    app:layout_gravity="fill_horizontal" />
+
+            </android.support.v7.widget.GridLayout>
+
+
+            <include layout="@layout/divider_grey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:background="@color/primary_gray_lightest"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/total"
+                    android:textColor="@color/product_red_medium"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textview_total_btc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/product_red_medium"
+                    android:textSize="20sp"
+                    tools:text="0.0082444 BTC" />
+
+                <TextView
+                    android:id="@+id/textview_total_fiat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/product_red_medium"
+                    android:textSize="14sp"
+                    tools:text="$10.64" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/contacts_confirm_explanation"
+                android:textColor="@color/product_gray_hint"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/button_send"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/contacts_confirm_start_transaction"
+                android:theme="@style/ButtonLightBlueTheme" />
+
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>

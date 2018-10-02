@@ -1,0 +1,15 @@
+.button-clear{
+  background: none !important;
+}
+
+.button-skip {
+  padding-top: 15px !important;
+  font-size: 24px !important;
+}
+
+textarea {
+  &.d-block {
+    display: block;
+    width: 100%;
+  }
+}

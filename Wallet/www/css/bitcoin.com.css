@@ -1,0 +1,350 @@
+@font-face {
+	font-family:"Montserrat";
+	src:url('../fonts/Montserrat-Regular.ttf');
+	font-style:normal;font-weight:400;
+}
+
+@font-face {
+	font-family:"Montserrat";
+	src:url('../fonts/Montserrat-Bold.ttf');
+	font-style:normal;font-weight:700;
+}
+
+@font-face{
+    font-family:'ProximaNova';
+    src:url('../fonts/ProximaNova-Regular.otf');
+    font-weight:normal;
+    font-style:normal;
+}
+
+@font-face{
+    font-family:'ProximaNova';
+    src:url('../fonts/ProximaNova-Semibold.otf');
+    font-weight:bold;
+    font-style:bold;
+}
+
+body {
+    font-family:'ProximaNova' !important;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.textlogo {
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Montserrat';
+    line-height: 50px;
+    margin-left: 20px;
+    letter-spacing: -0.02em;
+    position: relative;
+    top: -4px;
+}
+
+.textlogo .moon-symbol {
+    color: #fab915;
+    margin-right: 1px;
+    position: relative;
+    top: 1px;
+}
+
+.bg.icon-bitcoincom:before {
+        content: "\e904";
+}
+
+.bg.icon-bitcoincom {
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-top: 8px;
+    padding-left: 11px;
+    background-color: #494949;
+    color: #fab915;
+}
+
+.bg.icon-buy-bitcoin2:before {
+    content: "\e906";
+}
+
+.icon-bitcoinlogoplain:before {
+    content: "\e904";
+}
+
+.icon-bitcoinlogoplain {
+    font-family: 'icomoon' !important;
+}
+
+.bg.icon-buy-bitcoin2 {
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-top: 0px;
+    padding-left: 2px;
+    background-color: #494949;
+    color: #fab915;
+    font-size: 36px;
+}
+
+ion-header-bar.bar-royal {
+    background-color: #000 !important;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+}
+.bitcoin-com-page-header .textlogo {
+    font-size: 42px;
+    color: #8b8b8b;
+}
+.bitcoin-com-page-header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#get-started {
+    background-color: #494949 !important;
+}
+
+#restore {
+    color: #494949 !important;
+}
+
+div.onboarding-topic, div.onboarding-description, div.onboarding-tldr, #lead, .onboarding .bar.bar-header button {
+    color: #FFF !important;
+}
+
+.onboarding .button.button-secondary {
+    color: #494949 !important;
+}
+
+div.onboarding-topic {
+    font-weight: 600;
+}
+
+#onboarding-collect-email {
+    background: #23d111 !important;
+}
+
+#email-form button {
+    background: #fab915 !important;
+}
+
+.big-icon-svg > .bg.green {
+   background: #fab915 !important;
+}
+
+button.button.button-secondary {
+    color: #494949 !important;
+}
+
+#wallet-backup-phrase .backup-phrase {
+    color: inherit !important;
+}
+
+#wallet-backup-phrase-step-2 .select-word {
+    color: #FFF !important;
+}
+
+#pin .circle-Bitcoin\.com {
+    border-radius: 50%;
+    box-shadow: 0 0 3px 0px #5b5b5b;
+    transition: background-color .2s ease-in-out;
+    padding: 7%;
+    margin: 5%;
+    border: 1px solid #fab915;
+}
+
+#pin .filled-Bitcoin\.com {
+    background-color: #fab915;
+}
+
+div.slide-success__background.fill-screen {
+    background-color: #fab915 !important;
+}
+
+.chart-container {
+    font-family: 'Varela Round', sans-serif;
+    width:100%;
+    height:100%;
+}
+
+.ct-series-a .ct-area {
+    fill: #FDE9BE;
+}
+
+#bch-chart .ct-area {
+	fill: #008917;
+}
+
+.ct-area {
+    opacity:.6 !important;
+}
+
+.ct-series-a .ct-line,
+.ct-series-a .ct-point {
+    stroke: #F9B016;
+    stroke-width: 2px;
+}
+
+#bch-chart .ct-series-a .ct-line,
+#bch-chart .ct-series-a .ct-point {
+	stroke: #46C05C;
+	stroke-width: 2px;
+}
+
+.ct-labels {
+    border: red thin solid;
+}
+.chart-header {
+    display: flex;
+    box-sizing: border-box;
+    width:100%;
+    height:10%;
+    color: white;
+
+}
+.latest-price {
+    box-sizing: border-box;
+    font-size: 1.6em;
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+.high-price {
+    box-sizing: border-box;
+    font-size: 1em;
+    width: 100%;
+    height: 64px;
+    text-align: center;
+    margin-top: 20px;
+}
+.low-price {
+    box-sizing: border-box;
+    font-size: 1em;
+    width: 100%;
+    height: 64px;
+    text-align: center;
+    margin-top: 20px;
+}
+.light-yellow {
+    color:#555;
+}
+
+.light-green {
+	color:#26B03C;
+}
+
+.icon-chart {
+    background-color: #494949;
+    background-image: url('../img/chart.svg');
+}
+
+.icon-shapeshift {
+	background-color: #494949;
+	background-image: url('../img/shapeshifticon.png');
+}
+
+.icon-games {
+	background-color: #494949;
+	background-image: url('../img/icon-games.svg');
+}
+
+.icon-mining {
+	background-color: #494949;
+	background-image: url('../img/icon-mining.svg');
+}
+
+.icon-news {
+	background-color: #494949;
+	background-image: url('../img/icon-news.svg');
+}
+
+.icon-tools {
+	background-color: #494949;
+	background-image: url('../img/icon-tools.svg');
+}
+
+.icon-reddit {
+	background-color: #494949;
+	background-image: url('../img/icon-reddit.svg');
+}
+
+.icon-twitter {
+	background-color: #494949;
+	background-image: url('../img/icon-twitter.svg');
+}
+
+.icon-sign-message {
+	background-color: #494949;
+	background-image: url('../img/icon-sign-message.svg');
+}
+
+.icon-verify-message {
+	background-color: #494949;
+	background-image: url('../img/icon-verify-message.svg');
+}
+
+.icon-share {
+	background-color: #494949;
+	background-image: url('../img/icon-share.svg');
+}
+
+.tabs .tab-item .icon {
+    background-size: contain;
+}
+
+.shapeshift-banner {
+	background: url(../img/shapeshiftbg.jpg) center center no-repeat #28394d;
+	padding: 10px;
+	box-shadow: 0px 5px 10px 0px #cccccc;
+	height: 5em;
+}
+
+.shapeshift-logo {
+	display: block;
+	float: left;
+	max-height: 100%;
+  max-width: 100%;
+}
+
+.bitpay-banner {
+	background: #1A3A8B;
+	padding: 10px;
+	box-shadow: 0px 5px 10px 0px #cccccc;
+	height: 5em;
+}
+
+.bitpay-logo { 
+	display: block;
+	max-height: 100%;
+  width: 100%;
+  height: 4em;
+}
+
+.egifter-banner {
+	background: #066EAA;
+	padding: 10px;
+	box-shadow: 0px 5px 10px 0px #cccccc;
+  height: 5em;
+  text-align: center;
+}
+
+.egifter-logo { 
+	max-height: 100%;
+  max-width: 100%;
+  height: 4em;
+}

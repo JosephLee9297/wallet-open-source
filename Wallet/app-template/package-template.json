@@ -1,0 +1,151 @@
+{
+  "name": "*PACKAGENAME*",
+  "description": "*DESCRIPTION*",
+  "author": "BitPay",
+  "version": "*VERSION*",
+  "androidVersion": "*ANDROIDVERSION*",
+  "fullVersion": "*FULLVERSION*",
+  "keywords": [
+    "bitcoin",
+    "wallet",
+    "bitpay",
+    "copay",
+    "multisignature",
+    "bitcore"
+  ],
+  "main": "www/index.html",
+  "title": "*USERVISIBLENAME*",
+  "nameCaseNoSpace": "*NAMECASENOSPACE*",
+  "window": {
+    "title": "*USERVISIBLENAME*",
+    "icon": "www/img/app/icon.png",
+    "toolbar": false,
+    "show": true,
+    "visible": true,
+    "resizable": true,
+    "frame": true,
+    "width": 400,
+    "height": 650,
+    "min_width": 400,
+    "max_width": 800,
+    "min_height": 650,
+    "position": "center",
+    "fullscreen": false
+  },
+  "webkit": {
+    "page-cache": false,
+    "java": false,
+    "plugin": false
+  },
+  "dom_storage_quota": 200,
+  "id": "jid1-x7bV5evAaI1P9Q",
+  "homepage": "*URL*",
+  "license": "MIT",
+  "repository": {
+    "url": "*GITHUBREPOURL*",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "*GITHUBREPOBUGS*"
+  },
+  "engines": {
+   "node": "6",
+   "npm": "3"
+  },
+  "dependencies": {
+    "adm-zip": "^0.4.7",
+    "angular": "1.4.6",
+    "angular-mocks": "1.4.10",
+    "bezier-easing": "^2.0.3",
+    "bhttp": "1.2.1",
+    "bitauth": "^0.2.1",
+    "bitcore-wallet-client": "https://github.com/Bitcoin-com/bitcore-wallet-client.git",
+    "bower": "^1.7.9",
+    "cordova-custom-config": "^3.0.5",
+    "cordova-plugin-qrscanner": "^2.5.0",
+    "cordova-plugin-vibration": "^3.0.1",
+    "coveralls": "^2.11.9",
+    "express": "^4.11.2",
+    "fs": "0.0.2",
+    "fs-extra": "^0.30.0",
+    "grunt-angular-gettext": "^2.2.3",
+    "grunt-browserify": "^5.0.0",
+    "grunt-cli": "^1.2.0",
+    "grunt-curl": "^2.4.1",
+    "grunt-zip": "^0.17.1",
+    "grunt-contrib-compress": "^1.3.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-exec": "^1.0.0",
+    "grunt-nw-builder": "^2.0.3",
+    "grunt-sass": "^1.2.0",
+    "load-grunt-tasks": "^3.5.0",
+    "shelljs": "^0.3.0",
+    "android-versions": "^1.2.1",
+    "bitcoincashjs-fork": "^1.0.3"
+  },
+  "scripts": {
+    "apply:bitcoincom":       "npm i fs-extra && cd app-template && node apply.js bitcoincom && npm i && cordova prepare && cd ../ && ./fix-asn1.sh",
+    
+    "build:app-release":      "grunt build-app-release",
+    
+    "build:mobile-release":   "grunt build-mobile-release",
+    "build:desktop-release":  "grunt build-desktop-release",
+
+    "build:android-debug":    "grunt build-android-debug",
+    "build:android-release":  "grunt build-android-release",
+
+    "build:ios-debug":        "grunt build-ios-debug",
+    "build:ios-release":      "grunt build-ios-release",
+
+    "build:desktop":          "grunt build-desktop",
+    "build:osx-pkg":          "grunt build-desktop-osx-pkg",
+    "build:osx-dmg":          "grunt build-desktop-osx-dmg",
+    "build:others":           "grunt build-desktop-others",
+
+    "build:windows":          "cordova prepare windows && cordova build windows -- --arch=\"ARM\"",
+    "build:windows-release":  "cordova prepare windows && cordova build windows --release --arch=\"ARM\"",
+    "build:www":              "grunt",
+    "build:www-release":      "grunt prod",
+    
+    "clean":                  "trash platforms && trash plugins && cordova prepare",
+    "clean-all":              "git clean -dfx",
+    
+    "log:android":            "adb logcat | grep chromium",
+
+    "open:android":           "grunt exec:android_studio",
+    "open:ios":               "grunt exec:xcode",
+
+    "postinstall":            "bower install",
+
+    "sign:android":           "grunt sign-android",
+    "sign:desktop":           "grunt sign-desktop",
+
+    "start":                  "npm run build:www && ionic serve --nolivereload --nogulp -s --address 0.0.0.0",
+    "start:chrome":           "npm run build:www && ionic serve --nolivereload --nogulp -s --address 0.0.0.0 --browser \"google chrome\"",
+    "start:android":          "grunt start-android",
+    "start:android-emulator": "grunt start-android",
+    "start:android-log":      "grunt start-android && npm run log:android",
+    "start:ios":              "grunt start-ios",
+    "start:windows":          "npm run build:www && npm run build:windows",
+
+    "test":                   "karma start test/karma.conf.js --single-run",
+    "unstage-package":        "git reset package.json",
+    "watch":                  "grunt watch"
+  },
+  "devDependencies": {
+    "cordova": "^6.3.1",
+    "grunt": "^1.0.1",
+    "ionic": "^3.6.0",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.2",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.2",
+    "trash-cli": "^1.4.0",
+    "lodash": "^4.17.4",
+    "pre-commit": "^1.1.3"
+  },
+  "pre-commit": "unstage-package"
+}

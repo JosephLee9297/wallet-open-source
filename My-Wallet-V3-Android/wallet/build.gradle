@@ -1,0 +1,95 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply from: 'integrationTest.gradle'
+apply from: '../quality/jacocoKtLibrary.gradle'
+apply from: '../quality/ktlint.gradle'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath Libraries.kotlinGradlePlugin
+    }
+}
+
+group = 'info.blockchain'
+
+sourceCompatibility = Versions.javaCompatibilityVersion
+targetCompatibility = Versions.javaCompatibilityVersion
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    jcenter()
+    maven { url "https://dl.bintray.com/ethereum/maven/" }
+}
+
+task sourceJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+dependencies {
+    api project(':balance')
+    // Expose Kotlin to all parent modules
+    api Libraries.kotlin
+    api files('libs/bitcoinj-core-0.15-SNAPSHOT.jar')
+    api files('libs/api-client-0.1.16-SNAPSHOT.jar')
+    api(Libraries.web3j) { exclude module: 'jackson' }
+    implementation Libraries.spongyCastle
+    implementation Libraries.scrypt
+    compileOnly Libraries.json
+    // Networking
+    implementation Libraries.jacksonCore
+    api Libraries.moshi
+    implementation(Libraries.retrofit) { exclude module: 'okhttp' }
+    implementation Libraries.retrofitJacksonConverter
+    implementation Libraries.retrofitRxMoshiConverter
+    implementation Libraries.retrofitRxJavaAdapter
+    implementation Libraries.okHttpInterceptor
+    // Utils
+    implementation(Libraries.jjwt) { exclude module: 'jackson' }
+    implementation Libraries.okIo
+    implementation Libraries.commonsIo
+    implementation Libraries.commonsCli
+    api Libraries.commonsCodec
+    api Libraries.commonsLang
+    api Libraries.urlBuilder
+    // Logging
+    implementation Libraries.slf4j
+    // BitcoinJ dependencies
+    implementation Libraries.protobuf
+    implementation Libraries.findbugs
+    api Libraries.guava
+
+    // Testing
+    testImplementation Libraries.junit
+    testImplementation Libraries.mockito
+    testImplementation Libraries.json
+    testImplementation Libraries.kluent
+}
+
+test {
+    testLogging {
+        events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+    }
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = Versions.kotlinJvmTarget
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = Versions.kotlinJvmTarget
+    }
+}

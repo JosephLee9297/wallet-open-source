@@ -1,0 +1,121 @@
+version: 2
+jobs:
+  build:
+    resource_class: large
+    docker:
+      - image: circleci/android:api-27-alpha
+    environment:
+      _JAVA_OPTIONS: -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
+    steps:
+      - checkout
+      - run:
+          name: Decode API Keys and Secrets
+          command: |
+            echo $FIREBASE_API_JSON  | base64 --decode > app/google-services.json
+            echo $SECRETS_PROPERTIES | base64 --decode > app/secrets.properties
+
+      - restore_cache:
+          keys:
+            - gradle-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+            - gradle-
+
+      - restore_cache:
+          key: android-cache-
+
+      - run:
+          name: Start Gradle Daemon
+          command: nohup ./gradlew
+
+      - run:
+          name: Build Tests
+          command: ./scripts/ci_assemble.sh
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: gradle-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+
+      - save_cache:
+          key: android-cache-{{ epoch }}
+          paths:
+            - ~/.android/build-cache
+            - ~/.android/cache
+
+      - run:
+          name: Run Tests
+          command: ./scripts/ci_unit_tests.sh
+
+      # App
+      - store_artifacts:
+          path: app/build/reports
+          destination: App Test Reports
+      - store_artifacts:
+          path: build/test-results
+          destination: App Test Result XML
+      - store_test_results:
+          path: build/test-results
+      # Wallet
+      - store_artifacts:
+          path: wallet/build/reports
+          destination: WalletTest Reports
+      - store_artifacts:
+          path: wallet/build/test-results
+          destination: Wallet Test Result XML
+      - store_test_results:
+          path: wallet/build/test-results
+      # Core
+      - store_artifacts:
+          path: core/build/reports
+          destination: Core Reports
+      - store_artifacts:
+          path: core/build/test-results
+          destination: Core Test Result XML
+      - store_test_results:
+          path: core/build/test-results
+      # Buy Sell
+      - store_artifacts:
+          path: buysell/build/reports
+          destination: Buy/Sell Reports
+      - store_artifacts:
+          path: buysell/build/test-results
+          destination: Buy/Sell Test Result XML
+      - store_test_results:
+          path: buysell/build/test-results
+
+  checks:
+    resource_class: large
+    docker:
+      - image: circleci/android:api-27-alpha
+    steps:
+      - checkout
+      - run:
+          name: Decode API Keys and Secrets
+          command: |
+            echo $FIREBASE_API_JSON  | base64 --decode > app/google-services.json
+            echo $SECRETS_PROPERTIES | base64 --decode > app/secrets.properties
+
+      - restore_cache:
+          keys:
+            - gradle-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+            - gradle-
+
+      - run:
+          name: Run Checks
+          command: ./scripts/ci_quality.sh
+
+      - store_artifacts:
+          path: app/build/reports
+          destination: Test Reports
+      - store_test_results:
+          path: build/test-results
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - checks
+
+notify:
+  webhooks:
+    - url: https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN

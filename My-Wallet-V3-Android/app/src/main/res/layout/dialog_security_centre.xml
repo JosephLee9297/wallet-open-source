@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="0dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/primary_navy_medium">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:tint="@color/white"
+            tools:src="@drawable/vector_lock" />
+    </FrameLayout>
+
+    <!-- Main content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/Base.DialogWindowTitle.AppCompat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/montserrat"
+                tools:text="@string/security_centre_email_title" />
+
+            <TextView
+                android:id="@+id/message"
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/security_centre_email_message" />
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-6dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/dont_ask_again"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Button Layout -->
+    <LinearLayout style="@style/CustomDialogButtonContainer">
+
+        <Button
+            android:id="@+id/button_negative"
+            style="@style/CustomDialogButton"
+            android:layout_gravity="right"
+            android:text="@string/not_now"
+            android:textColor="@color/primary_gray_dark"
+            android:visibility="gone"
+            tools:ignore="RtlHardcoded"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/button_positive"
+            style="@style/CustomDialogButton"
+            android:layout_gravity="right"
+            android:textColor="@color/primary_blue_accent"
+            tools:ignore="RtlHardcoded"
+            tools:text="@android:string/ok" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="piuk.blockchain.android.ui.account.AccountEditPresenter" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar_container"
+            layout="@layout/toolbar_general" />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/PlainTheme">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_transfer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:alpha="@{viewModel.accountModel.transferFundsAlpha}"
+                    android:background="?attr/selectableItemBackground"
+                    android:duplicateParentState="true"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center_vertical"
+                    android:minHeight="72dp"
+                    android:paddingLeft="16dp"
+                    android:text="@string/transfer"
+                    android:textColor="@color/product_green_medium"
+                    android:textSize="16sp"
+                    android:visibility="@{viewModel.accountModel.transferFundsVisibility}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/primary_gray_light"
+                    android:visibility="@{viewModel.accountModel.transferFundsVisibility}" />
+
+                <LinearLayout
+                    android:id="@+id/label_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="@{viewModel.accountModel.labelAlpha}"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="@{viewModel.accountModel.labelClickable}"
+                    android:gravity="center_vertical"
+                    android:minHeight="72dp"
+                    android:onClick="@{viewModel::onClickChangeLabel}"
+                    android:orientation="vertical"
+                    android:paddingBottom="4dp">
+
+                    <TextView
+                        android:id="@+id/tv_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:duplicateParentState="true"
+                        android:fontFamily="@font/montserrat"
+                        android:paddingLeft="16dp"
+                        android:text="@{viewModel.accountModel.labelHeader}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        tools:text="Account Header" />
+
+                    <TextView
+                        android:id="@+id/account_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:duplicateParentState="true"
+                        android:fontFamily="@font/montserrat"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@{viewModel.accountModel.label}"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="Account 1" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/primary_gray_light" />
+
+                <TextView
+                    android:id="@+id/tv_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alpha="@{viewModel.accountModel.defaultAlpha}"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="@{viewModel.accountModel.defaultClickable}"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center_vertical"
+                    android:minHeight="72dp"
+                    android:onClick="@{viewModel::onClickDefault}"
+                    android:paddingLeft="16dp"
+                    android:text="@{viewModel.accountModel.defaultText}"
+                    android:textColor="@{viewModel.accountModel.defaultTextColor}"
+                    android:textSize="16sp"
+                    android:visibility="@{viewModel.accountModel.defaultAccountVisibility}"
+                    tools:text="@string/make_default" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/primary_gray_light"
+                    android:visibility="@{viewModel.accountModel.defaultAccountVisibility}" />
+
+                <LinearLayout
+                    android:id="@+id/privx_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="@{viewModel.accountModel.xprivAlpha}"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="@{viewModel.accountModel.xprivClickable}"
+                    android:minHeight="72dp"
+                    android:onClick="@{viewModel::onClickScanXpriv}"
+                    android:orientation="vertical"
+                    android:paddingBottom="4dp"
+                    android:visibility="@{viewModel.accountModel.scanPrivateKeyVisibility}">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:duplicateParentState="true"
+                            android:fontFamily="@font/montserrat"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="16dp"
+                            android:text="@string/scan_private_key"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:duplicateParentState="true"
+                            android:gravity="center_vertical"
+                            android:minHeight="50dp"
+                            android:minWidth="50dp"
+                            android:paddingBottom="8dp"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="8dp"
+                            android:tint="@color/black"
+                            app:srcCompat="@drawable/vector_material_qr" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:alpha="0.7"
+                        android:duplicateParentState="true"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@string/watch_only_description"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/primary_gray_light"
+                    android:visibility="@{viewModel.accountModel.scanPrivateKeyVisibility}" />
+
+                <LinearLayout
+                    android:id="@+id/xpub_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="@{viewModel.accountModel.xpubAlpha}"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="@{viewModel.accountModel.xpubClickable}"
+                    android:minHeight="72dp"
+                    android:onClick="@{viewModel::onClickShowXpub}"
+                    android:orientation="vertical"
+                    android:paddingBottom="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <TextView
+                            android:id="@+id/tv_xpub"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:duplicateParentState="true"
+                            android:fontFamily="@font/montserrat"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="16dp"
+                            android:text="@{viewModel.accountModel.xpubText}"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            tools:text="@string/extended_public_key" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:duplicateParentState="true"
+                            android:gravity="center_vertical"
+                            android:minHeight="50dp"
+                            android:minWidth="50dp"
+                            android:paddingBottom="8dp"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="8dp"
+                            android:tint="@color/black"
+                            app:srcCompat="@drawable/vector_material_qr" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_extended_xpub_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:alpha="0.7"
+                        android:duplicateParentState="true"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@string/extended_public_key_description"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:visibility="@{viewModel.accountModel.xpubDescriptionVisibility}"
+                        tools:text="@string/extended_public_key_description" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/primary_gray_light" />
+
+                <LinearLayout
+                    android:id="@+id/archive_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="@{viewModel.accountModel.archiveAlpha}"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="@{viewModel.accountModel.archiveClickable}"
+                    android:gravity="center_vertical"
+                    android:minHeight="72dp"
+                    android:onClick="@{viewModel::onClickArchive}"
+                    android:orientation="vertical"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="16dp"
+                    android:visibility="@{viewModel.accountModel.archiveVisibility}">
+
+                    <TextView
+                        android:id="@+id/tv_archive"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:duplicateParentState="true"
+                        android:fontFamily="@font/montserrat"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="16dp"
+                        android:text="@{viewModel.accountModel.archiveHeader}"
+                        android:textColor="@color/product_red_medium"
+                        android:textSize="16sp"
+                        tools:text="@string/archive" />
+
+                    <TextView
+                        android:id="@+id/tv_archive_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:alpha="0.7"
+                        android:duplicateParentState="true"
+                        android:fontFamily="@font/montserrat"
+                        android:paddingBottom="16dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@{viewModel.accountModel.archiveText}"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="@string/archived_description" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/primary_gray_light"
+                    android:visibility="@{viewModel.accountModel.archiveVisibility}" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

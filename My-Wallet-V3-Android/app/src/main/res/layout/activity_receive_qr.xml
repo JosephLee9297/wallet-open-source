@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="24dp">
+
+    <TextView
+        android:id="@+id/account_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        tools:text="My Bitcoin Wallet" />
+
+    <ImageView
+        android:id="@+id/imageview_qr"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_below="@+id/account_name"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/address_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageview_qr"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+        tools:text="Bitcoin address" />
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address_info"
+        android:orientation="horizontal"
+        android:paddingBottom="4dp"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:paddingTop="4dp">
+
+        <Space
+            android:id="@+id/spacer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/action_copy"
+            style="?android:attr/buttonBarPositiveButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/copy_address"
+            android:textColor="@color/primary_blue_accent"
+            android:theme="@style/PlainTheme"
+            tools:ignore="NewApi" />
+
+        <Button
+            android:id="@+id/action_done"
+            style="?android:attr/buttonBarPositiveButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/done"
+            android:textColor="@color/primary_blue_accent"
+            android:theme="@style/PlainTheme"
+            tools:ignore="NewApi" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,40 @@
+#view-confirm {
+  background-color: #494949;
+  @extend .deflash-blue;
+  .item-note {
+    float: none;
+    .fee-rate {
+      display: inline-block;
+      .warn {
+        color: red;
+      }
+
+    }
+  }
+  .icon-amazon {
+    background-image: url("../img/icon-amazon.svg");
+  }
+  .tx-details-content > .scroll {
+    padding-bottom: .25rem;
+  }
+  .gravatar-contact {
+    display: flex;
+    margin-left: -3px;
+    span {
+      margin: 5px 0 0 8px;
+    }
+  }
+  .wallet-name {
+    margin-top: -3px;
+  }
+  .toggle {
+    cursor: pointer;
+  }
+  ion-content {
+    background-color: #ffffff;
+  }
+  slide-to-accept, slide-to-accept-success {
+    margin-bottom: constant(safe-area-inset-bottom); /* iOS 11.0 */
+    margin-bottom: env(safe-area-inset-bottom); /* iOS 11.2 */
+  }
+}
