@@ -1,4 +1,4 @@
-Direct link to APK file: https://github.com/btcontract/lnwallet/blob/master/app/app-release.apk  
+Direct link to APK file: https://github.com/JosephLee9297/wallet-open-source/blob/master/lnwallet/app/app-release.apk
 
 Genuine Bitcoin Lightning Wallet is ONLY available on Google Play store for now:  
 
